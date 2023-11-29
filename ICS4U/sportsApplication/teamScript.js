@@ -1,8 +1,10 @@
 // Function to show team stats 
 function updateTeamStats() {
     // Get the selected team from the dropdown
-    const selectedTeam = document.getElementById('teamSelect').value;
+    const teamNameFromURL = getURLParameter('team');
+    const selectedTeam = teamNameFromURL || document.getElementById('teamSelect').value;
     const teamStatsContainer = document.getElementById('teamStatsContainer');
+
 
     // Check if a team is selected
     if (!selectedTeam) {
@@ -212,6 +214,20 @@ function getURLParameter(name) {
     const params = new URLSearchParams(window.location.search);
     return params.get(name);
 }
+
+
+function changeTeamSelection() {
+    const selectedTeam = document.getElementById('teamSelect').value;
+    // Update URL parameter without reloading the page
+    history.pushState(null, '', '?team=' + encodeURIComponent(selectedTeam));
+    // Call updateTeamStats to refresh the stats
+    updateTeamStats();
+}
+
+
+
+
+
 
 
 
