@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .navbar {
+            height: 80px;
+            padding: 10px 0;
+        }
+
+        .navbar-item img {
+            max-height: 50px;
+        }
+
+        .navbar-item {
+            font-size: 1.3rem;
+        }
+
+        #nbaWebpageButton {
+            border: 2px solid #007bff;
+            background-color: white;
+            color: #007bff;
+        }
+
+        #nbaWebpageButton:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .navbar-menu {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .navbar-brand {
+            padding-left: 30px;
+        }
+
+        img.nba-logo {
+            max-height: 50px;
+            margin-bottom: 20px;
+        }
+
+        p.season-note {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .team-stats {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .card {
+            margin: 10px;
+            margin-top: 30px;
+        }
+
+        @media screen and (max-width: 768px) {
+            #nbaWebpageButton {
+                display: none;
+            }
+        }
+    </style>
+
+    <title>NBA Teams</title>
+</head>
+
+<body>
+    <section>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <img src="Image/pngimg.com - nba_PNG8.png" alt="Logo">
+                </a>
+
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                    data-target="navbarBasic">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navbarBasic" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="stats.html">Statistics</a>
+                    <a class="navbar-item" href="team.html">Teams</a>
+                </div>
+
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-light" id="nbaWebpageButton" href="https://www.nba.com">NBA Webpage</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="field">
+                <label class="label">Select a Team:</label>
+                <div class="control">
+                    <div class="select is-fullwidth">
+                        <select id="teamSelect" onchange="updateTeamStats()">
+                            <option disabled selected hidden>Select Team Name</option>
+                            <option value="Toronto Raptors">Toronto Raptors</option>
+                            <option value="Boston Celtics">Boston Celtics</option>
+                            <option value="Philadelphia 76ers">Philadelphia 76ers</option>
+                            <option value="Brooklyn Nets*">Brooklyn Nets</option>
+                            <option value="New York Knicks">New York Knicks</option>
+                            <option value="Milwaukee Bucks">Milwaukee Bucks</option>
+                            <option value="Indiana Pacers">Indiana Pacers</option>
+                            <option value="Chicago Bulls">Chicago Bulls</option>
+                            <option value="Detroit Pistons">Detroit Pistons</option>
+                            <option value="Cleveland Cavaliers">Cleveland Cavaliers</option>
+                            <option value="Miami Heat">Miami Heat</option>
+                            <option value="Orlando Magic">Orlando Magic</option>
+                            <option value="Charlotte Hornets">Charlotte Hornets</option>
+                            <option value="Washington Wizards">Washington Wizards</option>
+                            <option value="Atlanta Hawks">Atlanta Hawks</option>
+                            <option value="Denver Nuggets">Denver Nuggets</option>
+                            <option value="Oklahoma City Thunder">Oklahoma City Thunder</option>
+                            <option value="Utah Jazz">Utah Jazz</option>
+                            <option value="Portland Trail Blazers">Portland Trail Blazers</option>
+                            <option value="Minnesota Timberwolves">Minnesota Timberwolves </option>
+                            <option value="Los Angeles Lakers">Los Angeles Lakers</option>
+                            <option value="Los Angeles Clippers">Los Angeles Clippers</option>
+                            <option value="Phoenix Suns">Phoenix Suns</option>
+                            <option value="Sacramento Kings">Sacramento Kings</option>
+                            <option value="Golden State Warriors">Golden State Warriors</option>
+                            <option value="Houston Rockets">Houston Rockets</option>
+                            <option value="Dallas Mavericks">Dallas Mavericks</option>
+                            <option value="Memphis Grizzlies">Memphis Grizzlies</option>
+                            <option value="San Antonio Spurs">San Antonio Spurs</option>
+                            <option value="New Orleans Pelicans">New Orleans Pelicans</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container" id="teamStatsContainer">
+            <h2 class="title">Team Statistics</h2>
+        </div>
+        <div id="teamGamesContainer">
+        </div>
+    </section>
+
+
+    <script src="scriptZ.js"></script>
+    <script src="teamScript.js"></script>
+
+
+</body>
+
+</html>

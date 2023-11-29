@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .navbar {
+            height: 80px;
+            padding: 10px 0;
+        }
+
+        .navbar-item img {
+            max-height: 50px;
+        }
+
+        .navbar-item {
+            font-size: 1.3rem;
+        }
+
+        #nbaWebpageButton {
+            border: 2px solid #007bff;
+            background-color: white;
+            color: #007bff;
+        }
+
+        #nbaWebpageButton:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .navbar-menu {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .navbar-brand {
+            padding-left: 30px;
+        }
+
+        .stat-button {
+            border: none;
+            background: none;
+        }
+
+        .table-header:hover {
+            background: lightgray;
+        }
+
+        .addNew {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 20px;
+            color: rgb(54, 53, 53);
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .game-card {
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: #fff;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #gamesContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+
+        }
+
+        @media screen and (max-width: 768px) {
+            #nbaWebpageButton {
+                display: none;
+            }
+        }
+
+
+        @media (max-width: 1024px) {
+            .games-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+
+        .pagination-list {
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+
+        .sectionDisplay {
+            margin-top: 20px;
+        }
+    </style>
+
+    <title>NBA Statistics</title>
+</head>
+
+<body>
+
+    <section>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <img src="Image/pngimg.com - nba_PNG8.png" alt="Logo">
+                </a>
+
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                    data-target="navbarBasic">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navbarBasic" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="stats.html">Statistics</a>
+                    <a class="navbar-item" href="team.html">Teams</a>
+                </div>
+
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-light" id="nbaWebpageButton" href="https://www.nba.com">NBA Webpage</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+
+    <section class="section" style="padding: 40px;">
+        <div class="container">
+            <h1 class="title">NBA Scores 2022 Season</h1>
+            <h1 class="addNew">Add New Game</h1>
+
+            <div id="inputSection">
+                <div class="columns">
+
+                    <div class="column">
+                        <label class="label">Year</label>
+                        <input class="input" type="date" id="date">
+                    </div>
+
+                    <div class="column">
+                        <label class="label">Home Team</label>
+                        <div class="select"> <select id="homeTeam">
+                                <option disabled selected hidden>Team Name</option>
+                                <option value="Toronto Raptors">Toronto Raptors</option>
+                                <option value="Boston Celtics">Boston Celtics</option>
+                                <option value="Philadelphia 76ers">Philadelphia 76ers</option>
+                                <option value="Brooklyn Nets*">Brooklyn Nets</option>
+                                <option value="New York Knicks">New York Knicks</option>
+                                <option value="Milwaukee Bucks">Milwaukee Bucks</option>
+                                <option value="Indiana Pacers">Indiana Pacers</option>
+                                <option value="Chicago Bulls">Chicago Bulls</option>
+                                <option value="Detroit Pistons">Detroit Pistons</option>
+                                <option value="Cleveland Cavaliers">Cleveland Cavaliers</option>
+                                <option value="Miami Heat">Miami Heat</option>
+                                <option value="Orlando Magic">Orlando Magic</option>
+                                <option value="Charlotte Hornets">Charlotte Hornets</option>
+                                <option value="Washington Wizards">Washington Wizards</option>
+                                <option value="Atlanta Hawks">Atlanta Hawks</option>
+                                <option value="Denver Nuggets">Denver Nuggets</option>
+                                <option value="Oklahoma City Thunder">Oklahoma City Thunder</option>
+                                <option value="Utah Jazz">Utah Jazz</option>
+                                <option value="Portland Trail Blazers">Portland Trail Blazers</option>
+                                <option value="Minnesota Timberwolves">Minnesota Timberwolves </option>
+                                <option value="Los Angeles Lakers">Los Angeles Lakers</option>
+                                <option value="Los Angeles Clippers">Los Angeles Clippers</option>
+                                <option value="Phoenix Suns">Phoenix Suns</option>
+                                <option value="Sacramento Kings">Sacramento Kings</option>
+                                <option value="Golden State Warriors">Golden State Warriors</option>
+                                <option value="Houston Rockets">Houston Rockets</option>
+                                <option value="Dallas Mavericks">Dallas Mavericks</option>
+                                <option value="Memphis Grizzlies">Memphis Grizzlies</option>
+                                <option value="San Antonio Spurs">San Antonio Spurs</option>
+                                <option value="New Orleans Pelicans">New Orleans Pelicans</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <label class="label">Score</label>
+                        <input class="input" type="number" id="scoreHome">
+                    </div>
+
+                    <div class="column">
+                        <label class="label">Away Team</label>
+                        <div class="select"> <select id="awayTeam">
+                                <option disabled selected hidden>Team Name</option>
+                                <option value="Toronto Raptors">Toronto Raptors</option>
+                                <option value="Boston Celtics">Boston Celtics</option>
+                                <option value="Philadelphia 76ers">Philadelphia 76ers</option>
+                                <option value="Brooklyn Nets*">Brooklyn Nets</option>
+                                <option value="New York Knicks">New York Knicks</option>
+                                <option value="Milwaukee Bucks">Milwaukee Bucks</option>
+                                <option value="Indiana Pacers">Indiana Pacers</option>
+                                <option value="Chicago Bulls">Chicago Bulls</option>
+                                <option value="Detroit Pistons">Detroit Pistons</option>
+                                <option value="Cleveland Cavaliers">Cleveland Cavaliers</option>
+                                <option value="Miami Heat">Miami Heat</option>
+                                <option value="Orlando Magic">Orlando Magic</option>
+                                <option value="Charlotte Hornets">Charlotte Hornets</option>
+                                <option value="Washington Wizards">Washington Wizards</option>
+                                <option value="Atlanta Hawks">Atlanta Hawks</option>
+                                <option value="Denver Nuggets">Denver Nuggets</option>
+                                <option value="Oklahoma City Thunder">Oklahoma City Thunder</option>
+                                <option value="Utah Jazz">Utah Jazz</option>
+                                <option value="Portland Trail Blazers">Portland Trail Blazers</option>
+                                <option value="Minnesota Timberwolves	">Minnesota Timberwolves </option>
+                                <option value="Los Angeles Lakers">Los Angeles Lakers</option>
+                                <option value="Los Angeles Clippers">Los Angeles Clippers</option>
+                                <option value="Phoenix Suns">Phoenix Suns</option>
+                                <option value="Sacramento Kings">Sacramento Kings</option>
+                                <option value="Golden State Warriors">Golden State Warriors</option>
+                                <option value="Houston Rockets">Houston Rockets</option>
+                                <option value="Dallas Mavericks">Dallas Mavericks</option>
+                                <option value="Memphis Grizzlies">Memphis Grizzlies</option>
+                                <option value="San Antonio Spurs">San Antonio Spurs</option>
+                                <option value="New Orleans Pelicans">New Orleans Pelicans</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <label class="label">Score</label>
+                        <input class="input" type="number" id="awayScore">
+                    </div>
+
+                </div>
+
+                <button class="button mb-2" style="margin-top: 20px;" onclick="addGame()">Submit</button>
+                <button class="button mb-2 is-black" onclick="deleteLocalStorage()" style="margin-top: 20px;">Delete
+                    All</button>
+
+
+                <section id="filterSection">
+                    <div class="columns" style="margin-top: 20px;">
+                        <div class="column">
+                            <label class="label">Earliest Date</label>
+                            <input class="input" type="date" id="earliestDate">
+                        </div>
+                        <div class="column">
+                            <label class="label">Latest Date</label>
+                            <input class="input" type="date" id="latestDate">
+                        </div>
+                        <div class="column is-narrow">
+                            <button class="button mb-2" style="margin-top: 32px;" onclick="filterGame()">Fliter</button>
+                        </div>
+                        <div class="column is-narrow">
+                            <button class="button mb-2 is-black" style="margin-top: 32px;"
+                                onclick="clearFilter()">Clear</button>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section id="divisionLeagueSection" class="sectionDisplay" style="padding: 0px;">
+                    <div class="container">
+                        <div class="buttons is-centered">
+                            <button onclick="displayRows('Atlantic')" class="button is-outlined">Atlantic</button>
+                            <button onclick="displayRows('Central')" class="button  is-outlined">Central</button>
+                            <button onclick="displayRows('Southeast')" class="button is-outlined">Southeast</button>
+                            <button onclick="displayRows('Northwest')" class="button is-outlined">Northwest</button>
+                            <button onclick="displayRows('Pacific')" class="button  is-outlined">Pacific</button>
+                            <button onclick="displayRows('Southwest')" class="button is-outlined">Southwest</button>
+                            <button onclick="displayRowsL('Eastern')" class="button  is-outlined">Eastern
+                                Conference</button>
+                            <button onclick="displayRowsL('Western')" class="button  is-outlined">Western
+                                Conference</button>
+                            <button onclick="displayRows('All')" class="button  is-outlined">Show All</button>
+                        </div>
+                    </div>
+                </section>
+
+
+            </div>
+
+
+            <div class="tabs is-boxed is-fullwidth" style="margin-top: 40px;">
+                <ul>
+                    <li id="standings-tab" class="is-active" onclick="showStandings()">
+                        <a>Standings</a>
+                    </li>
+                    <li id="games-tab" onclick="showGames()">
+                        <a>Games</a>
+                    </li>
+                </ul>
+            </div>
+
+            <section id="games-section" style="display: none;">
+                <div id="gamesContainer" class="games-grid">
+                </div>
+                <div id="paginationContainer" class="pagination is-centered">
+                </div>
+            </section>
+
+
+            <section id="standings-section">
+                <table class="table is-fullwidth table is-striped table is-hoverable" style="margin-top: 50px;">
+                    <thead>
+                        <tr>
+                            <th class="table-header" onclick="sortTableName()"><button
+                                    class="stat-button numberButton">Team</button></th>
+
+                            <th class="table-header" onclick="sortTableNumber(1)"><button
+                                    class="stat-button numberButton">W</button></th>
+
+                            <th class="table-header" onclick="sortTableNumber(2)"><button
+                                    class="stat-button numberButton">L</button></th>
+
+                            <th class="table-header" onclick="sortTableNumber(3)"><button
+                                    class="stat-button numberButton">WinRate</button></th>
+
+                            <th class="table-header"><button class="stat-button numberButton">Home</button></th>
+
+                            <th class="table-header"><button class="stat-button numberButton">Road</button></th>
+
+                            <th class="table-header"><button class="stat-button numberButton">Streak</button></th>
+                        </tr>
+                    </thead>
+                    <tbody id="statsTableBody">
+                    </tbody>
+                </table>
+            </section>
+
+
+
+        </div>
+    </section>
+
+    <script src="scriptZ.js"></script>
+    <script src="sortAndFilter.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+            navbarBurgers.forEach(el => {
+                el.addEventListener('click', () => {
+                    const target = el.dataset.target;
+                    const targetElement = document.getElementById(target);
+
+                    el.classList.toggle('is-active');
+                    targetElement.classList.toggle('is-active');
+                });
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>
