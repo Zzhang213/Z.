@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Vue Boutique</title>
+    <!-- Import Styles -->
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <!-- Import Vue.js -->
+    <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="nav-bar"></div>
+        <div class="cart">Cart({{ itemCount }})</div>
+        <div class="product-display">
+            <div class="product-container">
+                <div class="product-image">
+                    <img :src="currentImage">
+                </div>
+                <div class="product-info">
+                    <h1>{{ itemName }}</h1>
+                    <p v-if="isAvailable">In Stock</p>
+                    <p v-else>Out of Stock</p>
+                    <ul>
+                        <li v-for="detail in itemDetails">{{ detail }}</li>
+                    </ul>
+                    <div class="color-circle" v-for="(variant, index) in itemVariants" :key="variant.id"
+                        @mouseover="changeImage(variant.variantImage)" :style="{ backgroundColor: variant.variantColor }"></div>
+                    <button class="button" :class="{ disabledButton: !isAvailable }" :disabled="!isAvailable"
+                        @click="addItemToCart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Import App -->
+<script src="./main.js"></script>
+    <script>
+        const mountedStoreApp = myStoreApp.mount('#app');
+    </script>
+</body>
+</html>
+
+
+
